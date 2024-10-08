@@ -1,0 +1,328 @@
+---
+- # ====== List: Navigation Menu ===============================
+  id: 26793621837990812306
+  identification: 
+    name: Navigation Menu
+
+  subscription: 
+    version-number: 15570387544156
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: خانه =========================================
+    id: 26794325206285812522
+    label: 
+      label: خانه
+
+    icon: 
+      image/icon-css-classes: fa-home
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: دریافت فایل ==================================
+    id: 32464327235537740555
+    label: 
+      label: دریافت فایل
+
+    icon: 
+      image/icon-css-classes: fa-table
+
+    layout: 
+      sequence: 90
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 7
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:7:&SESSION.::&DEBUG.::::'
+        page: 7 # Download Proposal
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: پروژه‌های من =================================
+    id: 32864866327247358979
+    label: 
+      label: پروژه‌های من
+
+    icon: 
+      image/icon-css-classes: fa-table
+
+    layout: 
+      sequence: 100
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 8
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:8:&SESSION.::&DEBUG.::::'
+        page: 8 # My Projects
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: نقش پروژه ====================================
+    id: 33176123387599565962
+    label: 
+      label: نقش پروژه
+
+    icon: 
+      image/icon-css-classes: fa-table-pointer
+
+    layout: 
+      sequence: 140
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 17
+      - 18
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:17:&SESSION.::&DEBUG.::::'
+        page: 17 # Submit/Update Role Project Grid
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: Education Officer Only # 32924474565630119820
+
+  - # ====== Entry: فایل =========================================
+    id: 33185147508765418345
+    label: 
+      label: فایل
+
+    icon: 
+      image/icon-css-classes: fa-table-pointer
+
+    layout: 
+      sequence: 150
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 19
+      - 20
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:19:&SESSION.::&DEBUG.::::'
+        page: 19 # Submit/Update Proposal Grid
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: پروژه ========================================
+    id: 33264455811276327514
+    label: 
+      label: پروژه
+
+    icon: 
+      image/icon-css-classes: fa-table-pointer
+
+    layout: 
+      sequence: 160
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 21
+      - 22
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:21:&SESSION.::&DEBUG.::::'
+        page: 21 # Submit/Update Project Grid
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: Education Officer Only # 32924474565630119820
+
+  - # ====== Entry: درخواست ======================================
+    id: 33959299114267271842
+    label: 
+      label: درخواست
+
+    icon: 
+      image/icon-css-classes: fa-table-pointer
+
+    layout: 
+      sequence: 170
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 12
+      - 14
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:12:&SESSION.::&DEBUG.::::'
+        page: 12 # Submit/Update Request Grid
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: زمان‌بندی ====================================
+    id: 36400091998525735644
+    label: 
+      label: زمان‌بندی
+
+    icon: 
+      image/icon-css-classes: fa-table-pointer
+
+    layout: 
+      sequence: 180
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 2
+      - 3
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&SESSION.::&DEBUG.::::'
+        page: 2 # Submit Timing grid
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: Education Officer Only # 32924474565630119820
+
+- # ====== List: Navigation Bar ================================
+  id: 26794314337954812507
+  identification: 
+    name: Navigation Bar
+
+  subscription: 
+    version-number: 15565058706427
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: &APP_USER. ===================================
+    id: 26794326799128812524
+    label: 
+      label: '&APP_USER.'
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: has-username
+
+  - # ====== Entry: --- ==========================================
+    id: 26794327270057812524
+    label: 
+      label: '---'
+
+    layout: 
+      sequence: 20
+      parent-entry: '&APP_USER.' # 26794326799128812524
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: separator
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+
+  - # ====== Entry: خروج =========================================
+    id: 26794327678419812525
+    label: 
+      label: خروج
+
+    icon: 
+      image/icon-css-classes: fa-sign-out
+
+    layout: 
+      sequence: 30
+      parent-entry: '&APP_USER.' # 26794326799128812524
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '&LOGOUT_URL.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+

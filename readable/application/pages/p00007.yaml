@@ -1,0 +1,734 @@
+---
+# ====== Page: Download Proposal =============================
+id: 7
+identification: 
+  name: Download Proposal
+  alias: DOWNLOAD-PROPOSAL
+  title: سامانه مدیریت پروژه کارشناسی
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 32464327605724740556
+  identification: 
+    name: Breadcrumb
+    title: تالب
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 26793621344885812306
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Download Proposal ===========================
+  id: 32464328389121740558
+  identification: 
+    name: Download Proposal
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH UserRole AS (
+          SELECT base_role
+          FROM "User"
+          WHERE UPPER(username) = UPPER(:APP_USER)
+      )
+      SELECT
+          f.id,
+          p.title,
+         -- p.student_id,
+          f.upload_date,
+          f.upload_date_farsi,
+          f.type,
+          ft.file_type,
+          f.file_data,
+          f.file_name,
+          f.mime_type,
+          f.file_charset,
+          sys.dbms_lob.getlength(f.file_data) AS file_size,
+          sys.dbms_lob.getlength(f.file_data) AS download
+      FROM
+          "files" f
+      JOIN
+          "Project" p ON f.project_id = p.id -- Join to get the project title
+      JOIN
+          file_types ft ON ft.id = f.type
+      JOIN
+          UserRole ur ON (
+              (ur.base_role = 'دانشجو' AND p.student_id = (SELECT id FROM "User" WHERE UPPER(username) = UPPER(:APP_USER)))
+              OR (ur.base_role = 'استاد' AND (p.supervisor_id = (SELECT id FROM "User" WHERE UPPER(username) = UPPER(:APP_USER))
+              OR p.reviewer_id = (SELECT id FROM "User" WHERE UPPER(username) = UPPER(:APP_USER))))
+              OR (ur.base_role = 'آموزش')
+          )
+      ORDER BY
+          f.upload_date DESC;
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 32464328438772740558
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+
+    messages: 
+      when-no-data-found: داده ای یافت نشد
+      when-more-data-found: 'حداکثر تعداد ردیف‌ها برای این گزارش #MAX_ROW_COUNT# ردیف است. لطفاً یک فیلتر اعمال کنید تا تعداد رکوردهای جستجوی شما کاهش یابد.'
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: true
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 32465333851980781163
+      identification: 
+        name: Primary Report
+        alias: 324653339
+
+    columns: 
+    - # ====== Column: ID ==========================================
+      id: 32263372683345061340
+      identification: 
+        column-name: ID
+        type: Hidden
+
+      heading: 
+        heading: شناسه
+
+      layout: 
+        sequence: 10
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FILE_CHARSET ================================
+      id: 32263373136576061345
+      identification: 
+        column-name: FILE_CHARSET
+        type: Hidden
+
+      heading: 
+        heading: File Charset
+
+      layout: 
+        sequence: 60
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: UPLOAD_DATE =================================
+      id: 32775176827119888711
+      identification: 
+        column-name: UPLOAD_DATE
+        type: Hidden
+
+      heading: 
+        heading: تاریخ بارگذاری
+
+      layout: 
+        sequence: 80
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FILE_NAME ===================================
+      id: 32775177006105888713
+      identification: 
+        column-name: FILE_NAME
+        type: Hidden
+
+      heading: 
+        heading: File Name
+
+      layout: 
+        sequence: 100
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MIME_TYPE ===================================
+      id: 32775177155588888714
+      identification: 
+        column-name: MIME_TYPE
+        type: Hidden
+
+      heading: 
+        heading: Mime Type
+
+      layout: 
+        sequence: 110
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FILE_SIZE ===================================
+      id: 32775177218963888715
+      identification: 
+        column-name: FILE_SIZE
+        type: Plain Text
+
+      heading: 
+        heading: سایز فایل (بایت)
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DOWNLOAD ====================================
+      id: 32775177594462888718
+      identification: 
+        column-name: DOWNLOAD
+        type: Download BLOB
+
+      heading: 
+        heading: دانلود
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 130
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        view-file-as: Attachment
+
+      blob-attributes: 
+        table-owner: Parsing Schema
+        table-name: files
+        blob-column: FILE_DATA
+        primary-key-column-1: ID
+        mime-type-column: MIME_TYPE
+        filename-column: FILE_NAME
+        last-updated-column: UPLOAD_DATE
+        character-set-column: FILE_CHARSET
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: FILE_DATA ===================================
+      id: 32775177774977888720
+      identification: 
+        column-name: FILE_DATA
+        type: Hidden
+
+      heading: 
+        heading: File Data
+
+      layout: 
+        sequence: 150
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TYPE ========================================
+      id: 32775179036532888733
+      identification: 
+        column-name: TYPE
+        type: Hidden
+
+      heading: 
+        heading: نوع
+
+      layout: 
+        sequence: 160
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FILE_TYPE ===================================
+      id: 32775179287449888735
+      identification: 
+        column-name: FILE_TYPE
+        type: Plain Text
+
+      heading: 
+        heading: نوع فایل
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 190
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TITLE =======================================
+      id: 33189263735030713002
+      identification: 
+        column-name: TITLE
+        type: Plain Text
+
+      heading: 
+        heading: عنوان
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 170
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: UPLOAD_DATE_FARSI ===========================
+      id: 35287667140880649406
+      identification: 
+        column-name: UPLOAD_DATE_FARSI
+        type: Plain Text
+
+      heading: 
+        heading: تاریخ بارگذاری فایل
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 180
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Download Proposal
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+page-items: 
+- # ====== Page Item: P7_FILE_ID2 ==============================
+  id: 32263370331238061317
+  identification: 
+    name: P7_FILE_ID2
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Download Proposal # 32464328389121740558
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+processes: 
+- # ====== Process: Download Proposal ==========================
+  id: 32263370236200061316
+  identification: 
+    name: Download Proposal
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_blob        BLOB;
+          l_blob_length NUMBER;
+          l_mime_type   VARCHAR2(255);
+          l_file_name   VARCHAR2(255);
+      BEGIN
+          -- Fetch the BLOB and MIME type from the database
+          SELECT file_data, type, 'proposal.pdf'
+          INTO l_blob, l_mime_type, l_file_name
+          FROM "files"
+          WHERE id = :P7_FILE_ID2; -- Ensure this matches the page item
+      
+          -- Set HTTP headers for file download
+          owa_util.mime_header(l_mime_type, FALSE);
+          htp.p('Content-length: ' || dbms_lob.getlength(l_blob));
+          htp.p('Content-Disposition: attachment; filename="' || l_file_name || '"');
+          owa_util.http_header_close;
+      
+          -- Write the BLOB content to the response
+          wpg_docload.download_file(l_blob);
+      EXCEPTION
+          WHEN NO_DATA_FOUND THEN
+              htp.p('No data found.');
+          WHEN OTHERS THEN
+              htp.p('Error: ' || SQLERRM);
+      END;
+      
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: New ========================================
+  id: 32263371491497061328
+  identification: 
+    name: New
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_blob        BLOB;
+          l_mime_type   VARCHAR2(255);
+          l_file_name   VARCHAR2(255);
+      BEGIN
+          -- Fetch the BLOB, MIME type, and file name from the database
+          SELECT file_data, mime_type, file_name
+          INTO l_blob, l_mime_type, l_file_name
+          FROM "files"
+          WHERE id = :P7_FILE_ID2;
+      
+          -- Set HTTP headers for file download
+          owa_util.mime_header(l_mime_type, FALSE);
+          htp.p('Content-length: ' || dbms_lob.getlength(l_blob));
+          htp.p('Content-Disposition: attachment; filename="' || l_file_name || '"');
+          owa_util.http_header_close;
+      
+          -- Write the BLOB content to the response
+          wpg_docload.download_file(l_blob);
+      EXCEPTION
+          WHEN NO_DATA_FOUND THEN
+              htp.p('No data found.');
+          WHEN OTHERS THEN
+              htp.p('Error: ' || SQLERRM);
+      END;
+      
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

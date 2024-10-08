@@ -1,0 +1,1125 @@
+---
+# ====== Page: Submit/Update Request Form ====================
+id: 14
+identification: 
+  name: Submit/Update Request Form
+  alias: SUBMIT-UPDATE-REQUEST-FORM
+  title: ایجاد / بروزرسانی درخواست
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer
+  template-options: 
+  - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
+
+dialog: 
+  chained: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  file-urls: 
+  - '#APP_FILES#persian-date.min.js'
+  - '#APP_FILES#persian-datepicker.min.js'
+  execute-when-page-loads: |2
+            // document.addEventListener('DOMContentLoaded', function() {
+                // if (typeof PersianDate !== 'undefined') {
+                    // Initialize the date picker
+                    // console.log('hiiiiiiiiiiiiiiiiiiiiiiiiiiiiii')
+                    $('#P14_SEND_REQUEST_DATE').persianDatepicker({
+                        format: 'YYYY/MM/DD',
+                        autoClose: true
+                    });
+                // } else {
+                    // console.error('PersianDate library not loaded');
+                // }
+            // });
+
+css: 
+  file-urls: 
+  - '#APP_FILES#persian-datepicker2.min.css'
+  - null
+  inline: '.t-Form-fieldContainer--floatingLabel {--a-field-input-font-size: .875rem !important;}'
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Submit/Update Request Form ==================
+  id: 33959289597710271833
+  identification: 
+    name: Submit/Update Request Form
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: Request
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    column-css-classes: 
+    - .custom-height
+    - '{'
+    - null
+    - null
+    - null
+    - null
+    - 'height:'
+    - 50px;
+    - /*
+    - Adjust
+    - the
+    - height
+    - value
+    - as
+    - per
+    - your
+    - need
+    - '*/'
+    - '}'
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Buttons =====================================
+  id: 33959294748997271838
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: Text (escape special characters)
+      show-line-breaks: true
+
+page-items: 
+- # ====== Page Item: P14_SEND_REQUEST_DATE ====================
+  id: 33189266284372713027
+  identification: 
+    name: P14_SEND_REQUEST_DATE
+    type: Text Field
+
+  label: 
+    label: تاریخ ارسال درخواست
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 90
+    region: Submit/Update Request Form # 33959289597710271833
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Submit/Update Request Form # 33959289597710271833
+    column: SEND_REQUEST_DATE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P14_ID ===================================
+  id: 33959289813244271833
+  identification: 
+    name: P14_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Submit/Update Request Form # 33959289597710271833
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Submit/Update Request Form # 33959289597710271833
+    column: ID
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P14_PROJECT_ID ===========================
+  id: 33959290273276271834
+  identification: 
+    name: P14_PROJECT_ID
+    type: Popup LOV
+
+  label: 
+    label: عنوان پروژه
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    search-as-you-type: true
+    minimum-characters: No minimum (0)
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: Submit/Update Request Form # 33959289597710271833
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: PROJECTS # 32978169503530364203
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    css-classes: 
+    - .custom-height
+    - '{'
+    - null
+    - null
+    - null
+    - null
+    - 'height:'
+    - 50px;
+    - /*
+    - Adjust
+    - this
+    - value
+    - as
+    - needed
+    - '*/'
+    - null
+    - null
+    - null
+    - null
+    - 'line-height:'
+    - 50px;
+    - /*
+    - Ensures
+    - the
+    - text
+    - inside
+    - is
+    - vertically
+    - aligned
+    - '*/'
+    - '}'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Submit/Update Request Form # 33959289597710271833
+    column: PROJECT_ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P14_STATE ================================
+  id: 33959290626585271835
+  identification: 
+    name: P14_STATE
+    type: Select List
+
+  label: 
+    label: وضعیت
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 40
+    region: Submit/Update Request Form # 33959289597710271833
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - .custom-height
+    - '{'
+    - null
+    - null
+    - null
+    - null
+    - 'height:'
+    - 50px;
+    - /*
+    - Adjust
+    - this
+    - value
+    - as
+    - needed
+    - '*/'
+    - null
+    - null
+    - null
+    - null
+    - 'line-height:'
+    - 50px;
+    - /*
+    - Ensures
+    - the
+    - text
+    - inside
+    - is
+    - vertically
+    - aligned
+    - '*/'
+    - '}'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: REQUEST_STATE # 33240636275538202312
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    css-classes: 
+    - .custom-height
+    - '{'
+    - null
+    - null
+    - null
+    - null
+    - 'height:'
+    - 50px;
+    - /*
+    - Adjust
+    - this
+    - value
+    - as
+    - needed
+    - '*/'
+    - null
+    - null
+    - null
+    - null
+    - 'line-height:'
+    - 50px;
+    - /*
+    - Ensures
+    - the
+    - text
+    - inside
+    - is
+    - vertically
+    - aligned
+    - '*/'
+    - '}'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Submit/Update Request Form # 33959289597710271833
+    column: STATE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P14_SENDER_ID ============================
+  id: 33959291081945271835
+  identification: 
+    name: P14_SENDER_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 50
+    region: Submit/Update Request Form # 33959289597710271833
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Submit/Update Request Form # 33959289597710271833
+    column: SENDER_ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: SQL Query (return single value)
+    sql-query-(return-single-value): |
+      SELECT id
+      FROM "User"
+      WHERE UPPER(username) = UPPER(:APP_USER)
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P14_RECEIVER_ID ==========================
+  id: 33959291482543271836
+  identification: 
+    name: P14_RECEIVER_ID
+    type: Select List
+
+  label: 
+    label: گیرنده
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 70
+    region: Submit/Update Request Form # 33959289597710271833
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: ALL+CAPACITY+FILTERED # 38586726270956942909
+    display-extra-values: true
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P14_TYPE
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Submit/Update Request Form # 33959289597710271833
+    column: RECEIVER_ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P14_TYPE =================================
+  id: 33959291894816271836
+  identification: 
+    name: P14_TYPE
+    type: Popup LOV
+
+  label: 
+    label: نوع درخواست
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    search-as-you-type: true
+    minimum-characters: No minimum (0)
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 30
+    region: Submit/Update Request Form # 33959289597710271833
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: REQUEST_TYPES.REQUEST_TYPE_NAME # 32422316701209593905
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Submit/Update Request Form # 33959289597710271833
+    column: TYPE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P14_DESCRIPTION ==========================
+  id: 33959292253595271836
+  identification: 
+    name: P14_DESCRIPTION
+    type: Text Field
+
+  label: 
+    label: توضیحات
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 80
+    region: Submit/Update Request Form # 33959289597710271833
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Submit/Update Request Form # 33959289597710271833
+    column: DESCRIPTION
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 33959295124992271839
+  identification: 
+    button-name: CANCEL
+    label: لغو
+
+  layout: 
+    sequence: 10
+    region: Buttons # 33959294748997271838
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 33959296543332271840
+  identification: 
+    button-name: DELETE
+    label: حذف
+
+  layout: 
+    sequence: 20
+    region: Buttons # 33959294748997271838
+    slot: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P14_ID
+
+- # ====== Button: SAVE ========================================
+  id: 33959296908378271840
+  identification: 
+    button-name: SAVE
+    label: بروزرسانی
+
+  layout: 
+    sequence: 30
+    region: Buttons # 33959294748997271838
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P14_ID
+
+- # ====== Button: CREATE ======================================
+  id: 33959297386552271840
+  identification: 
+    button-name: CREATE
+    label: ایجاد کن
+
+  layout: 
+    sequence: 40
+    region: Buttons # 33959294748997271838
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P14_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: Filter ==============================
+  id: 33189267626489713041
+  identification: 
+    name: Filter
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P14_TYPE
+
+  actions: 
+  - # ====== Action: receiver ====================================
+    id: 33189267822786713043
+    identification: 
+      name: receiver
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P14_RECEIVER_ID
+
+    execution: 
+      sequence: 20
+      event: Filter # 33189267626489713041
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 33959295248513271839
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCEL # 33959295124992271839
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 33959296018929271839
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 33959295248513271839
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Check / Decrease Capacity ==================
+  id: 33189265994978713024
+  identification: 
+    name: Check / Decrease Capacity
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          DECLARE
+              v_teacher_id NUMBER;
+              v_request_type NUMBER;
+              v_capacity NUMBER;
+              v_rows_updated NUMBER;
+              v_state NUMBER;
+              v_existing_state NUMBER;
+              v_request_exists NUMBER;
+          BEGIN
+              -- Get the request type, state, and teacher ID from the page items
+              v_request_type := :P14_TYPE;
+              v_teacher_id := :P14_RECEIVER_ID;
+              v_state := :P14_STATE;
+              
+              -- Check if the request exists and get its current state
+              BEGIN
+                  SELECT COUNT(*)
+                  INTO v_request_exists
+                  FROM "Request"
+                  WHERE id = :P14_ID; -- Assuming :P14_ID is the ID of the request
+      
+                  -- If the request exists, get its state
+                  IF v_request_exists > 0 THEN
+                      SELECT state
+                      INTO v_existing_state
+                      FROM "Request"
+                      WHERE id = :P14_ID; -- Assuming :P14_ID is the ID of the request
+                  ELSE
+                      v_existing_state := NULL;
+                  END IF;
+              EXCEPTION
+                  WHEN NO_DATA_FOUND THEN
+                      v_existing_state := NULL;
+              END;
+              
+              IF v_request_type = 41 THEN
+                  -- If the request is being updated and state changes to 3, insert a record into the Role table
+                  IF v_existing_state = 1 AND v_state = 3 THEN
+                      -- Insert a record in the Role table
+                      INSERT INTO "Role" (user_id, project_id, name)
+                      VALUES (:P14_RECEIVER_ID, :P14_PROJECT_ID, 21);
+                  END IF;
+              END IF;
+              
+              -- Handle new request creation
+              IF v_request_exists = 0 THEN
+                  -- Check if the request type is "انتخاب استاد راهنما"
+                  IF v_request_type = 1 THEN
+                      -- Get the current capacity of the teacher
+                      SELECT capacity
+                      INTO v_capacity
+                      FROM capacitys
+                      WHERE user_id = v_teacher_id;
+                      
+                      -- Check if the capacity is zero
+                      IF v_capacity = 0 THEN
+                          -- Raise a custom error message if capacity is zero
+                          RAISE_APPLICATION_ERROR(-20004, 'ظرفیت این استاد پر شده است');
+                      END IF;
+      
+                      -- Check if the request state is 3 before decreasing capacity
+                      IF v_state = 3 THEN
+                          -- Decrease the capacity of the teacher by 1
+                          UPDATE capacitys
+                          SET capacity = capacity - 1
+                          WHERE user_id = v_teacher_id
+                          RETURNING 1 INTO v_rows_updated;
+      
+                          -- Check if any rows were updated
+                          IF v_rows_updated = 0 THEN
+                              -- Raise a custom error message if no rows were updated
+                              RAISE_APPLICATION_ERROR(-20003, 'ظرفیت استاد به‌روز نشد. استاد پیدا نشد.');
+                          END IF;
+      
+                          INSERT INTO "Role" (user_id, project_id, name)
+                          VALUES (:P14_RECEIVER_ID, :P14_PROJECT_ID, 22);
+                      END IF;
+                  END IF;
+              
+              -- Handle update of an existing request
+              ELSIF v_request_exists > 0 THEN
+                  -- Check if the request type is "انتخاب استاد راهنما"
+                  IF v_request_type = 1 THEN
+                      -- Get the current capacity of the teacher
+                      SELECT capacity
+                      INTO v_capacity
+                      FROM capacitys
+                      WHERE user_id = v_teacher_id;
+                      
+                      -- Check if the capacity is zero
+                      IF v_capacity = 0 THEN
+                          -- Raise a custom error message if capacity is zero
+                          RAISE_APPLICATION_ERROR(-20004, 'ظرفیت این استاد پر شده است');
+                      END IF;
+      
+                      -- Check if the request state is 3 and it has changed from a different state
+                      IF v_state = 3 AND v_existing_state != 3 THEN
+                          -- Decrease the capacity of the teacher by 1
+                          UPDATE capacitys
+                          SET capacity = capacity - 1
+                          WHERE user_id = v_teacher_id
+                          RETURNING 1 INTO v_rows_updated;
+      
+                          -- Check if any rows were updated
+                          IF v_rows_updated = 0 THEN
+                              -- Raise a custom error message if no rows were updated
+                              RAISE_APPLICATION_ERROR(-20003, 'ظرفیت استاد به‌روز نشد. استاد پیدا نشد.');
+                          END IF;
+      
+                          INSERT INTO "Role" (user_id, project_id, name)
+                          VALUES (:P14_RECEIVER_ID, :P14_PROJECT_ID, 22);
+                      END IF;
+                  END IF;
+              END IF;
+      
+          EXCEPTION
+              WHEN NO_DATA_FOUND THEN
+                  -- Handle case where no capacity data is found
+                  RAISE_APPLICATION_ERROR(-20001, 'استادی با این آیدی یافت نشد');
+          END;
+      END;
+      
+
+  execution: 
+    sequence: 60
+    point: After Submit
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Initialize form Submit/Update Request Form =
+  id: 33959297719051271840
+  identification: 
+    name: Initialize form Submit/Update Request Form
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Submit/Update Request Form # 33959289597710271833
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Submit/Update Request Form ====
+  id: 33959298113311271841
+  identification: 
+    name: Process form Submit/Update Request Form
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Submit/Update Request Form # 33959289597710271833
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Close Dialog ===============================
+  id: 33959298523191271841
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+

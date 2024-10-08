@@ -1,0 +1,181 @@
+---
+- # ====== Static Application File: icons/app-icon-32.png ======
+  id: 26794315750524812510
+  identification: 
+    file-name: icons/app-icon-32.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-144-rounded.p
+  id: 26794316032491812511
+  identification: 
+    file-name: icons/app-icon-144-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-192.png =====
+  id: 26794316302469812511
+  identification: 
+    file-name: icons/app-icon-192.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-256-rounded.p
+  id: 26794316620986812512
+  identification: 
+    file-name: icons/app-icon-256-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-512.png =====
+  id: 26794316957771812512
+  identification: 
+    file-name: icons/app-icon-512.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: final-512.jpg ==============
+  id: 34556587364968576325
+  identification: 
+    file-name: final-512.jpg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: final-192.jpg ==============
+  id: 34557524552135588739
+  identification: 
+    file-name: final-192.jpg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: final-144.jpg ==============
+  id: 34557573108829593934
+  identification: 
+    file-name: final-144.jpg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: final-256.jpg ==============
+  id: 34558906082008327976
+  identification: 
+    file-name: final-256.jpg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: final-32.jpg ===============
+  id: 34559475189317341305
+  identification: 
+    file-name: final-32.jpg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: persian-date.min.js ========
+  id: 35552597311711518881
+  identification: 
+    file-name: persian-date.min.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: persian-datepicker.min.js ==
+  id: 35552993864837267383
+  identification: 
+    file-name: persian-datepicker.min.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: persian-datepicker.min.css =
+  id: 35553210870341270193
+  identification: 
+    file-name: persian-datepicker.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: persian-datepicker2.min.css 
+  id: 35607389817616229697
+  identification: 
+    file-name: persian-datepicker2.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: Iranian Sans.ttf ===========
+  id: 35613895328322445375
+  identification: 
+    file-name: Iranian Sans.ttf
+
+  attributes: 
+    mime-type: font/ttf
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: custom_css.css =============
+  id: 35615311300789497655
+  identification: 
+    file-name: custom_css.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: IRANSans.woff ==============
+  id: 35617584262404577298
+  identification: 
+    file-name: IRANSans.woff
+
+  attributes: 
+    mime-type: font/woff
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: IRANSans.woff2 =============
+  id: 35617714243811837143
+  identification: 
+    file-name: IRANSans.woff2
+
+  attributes: 
+    mime-type: font/woff2
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: Ahang-Regular.otf ==========
+  id: 35623277113228018292
+  identification: 
+    file-name: Ahang-Regular.otf
+
+  attributes: 
+    mime-type: font/otf
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: custom_css.min.css =========
+  id: 35623785365793046394
+  identification: 
+    file-name: custom_css.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+

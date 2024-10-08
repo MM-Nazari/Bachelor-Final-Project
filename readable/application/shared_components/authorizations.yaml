@@ -1,0 +1,45 @@
+---
+- # ====== Authorization: Administration Rights ================
+  id: 26794318208951812513
+  identification: 
+    name: Administration Rights
+
+  subscription: 
+    version-number: 15555273875191
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: return true;
+
+  server-cache: 
+    evaluation-point: Once per Page View
+
+  error: 
+    error-message: Insufficient privileges, user is not an Administrator
+
+- # ====== Authorization: Education Officer Only ===============
+  id: 32924474565630119820
+  identification: 
+    name: Education Officer Only
+
+  subscription: 
+    version-number: 15563023391887
+
+  authorization-scheme: 
+    type: Exists SQL Query
+
+  settings: 
+    sql-query: |
+      SELECT 1 
+      FROM "User"
+      WHERE UPPER(username) = UPPER(:APP_USER)
+        AND base_role = 'آموزش'
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: تنها کارشناس آموزش میتواند به این صفحه دسترسی داشته باشد
+

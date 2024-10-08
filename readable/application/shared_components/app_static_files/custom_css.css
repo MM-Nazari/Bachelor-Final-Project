@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Ahang';
+    src: url('#APP_FILES#Ahang-Regular.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    font-family: 'Ahang' !important;
+    direction: rtl;   /* Right-to-left for Farsi */
+    text-align: right;
+}

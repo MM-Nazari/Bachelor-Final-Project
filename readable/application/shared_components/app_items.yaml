@@ -1,0 +1,27 @@
+---
+- # ====== Application Item: APP_USER_ID =======================
+  id: 32209613034777975392
+  identification: 
+    name: APP_USER_ID
+    scope: Application
+
+  security: 
+    session-state-protection: Unrestricted
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 15560333379750
+
+- # ====== Application Item: P7_FILE_ID ========================
+  id: 32466417619461065390
+  identification: 
+    name: P7_FILE_ID
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 15560831931897
+
